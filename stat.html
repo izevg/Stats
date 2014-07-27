@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/additionals.css"/>
+    <script src="js/DnD.js"></script>
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <script src="js/bootstrap-dropdown.js"></script>
+    <script src="js/bootstrap-modal.js"></script>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>Поиск</title>
+</head>
+<body>
+<!-- Навигация -->
+<div class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand">Админ-панель</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Поиск</a></li>
+                <li><a href="#">Пакеты</a></li>
+                <li><a href="#">Новый пользователь</a></li>
+                <li class="dropdown">
+                    <a class="button dropdown-toggle" data-target="#" data-toggle="dropdown">Операции <b class="caret"></b></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Статистика</a></li>
+                        <li><a href="#">Действия</a></li>
+                    </ul>
+            </ul>
+            <!-- Кнопка справа -->
+            <ul class="nav navbar-nav navbar-right">
+                    <li><a data-target="#settings" data-toggle="modal"><i class="fa fa-cogs"></i></a></li>
+            </ul>
+            <div class="modal" id="settings" tabindex="-1" role="dialog" aria-labelledby="settingsModal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Настройки</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>UNDER CONSTRUCTION</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                            <button type="button" class="btn btn-primary">Сохранить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Конец навигации, начало сетки блоков -->
+    <div class="container">
+    <div class="row">
+        <!-- Первый блок, статичный, блок поиска -->
+        <div class="col-md-6">
+            <h3>Поиск</h3>
+            <FORM ACTION="/lists/search_userlist.php" METHOD=POST role="form">
+            <INPUT TYPE=hidden NAME=action VALUE=find>
+            <div class="form-group">
+                <label for="loginInput">Логин</label>
+                <INPUT id="loginInput" class="form-control" TYPE=text SIZE=32 MAXLENGTH=32 NAME=user placeholder="Логин">
+            </div>
+            <div class="form-group">
+                <label for="fioInput">ФИО</label>
+                <INPUT id="fioInput" class="form-control" TYPE=text SIZE=32 MAXLENGTH=128 NAME=fio placeholder="ФИО">
+            </div>
+            <div class="form-group">
+                <label for="phoneInput">Телефон</label>
+                <INPUT id="phoneInput" class="form-control" TYPE=text SIZE=32 MAXLENGTH=32 NAME=phone placeholder="Телефон">
+            </div>
+            <div class="form-group">
+                <label for="addressInput">Адрес</label>
+                <INPUT id="addressInput" class="form-control" TYPE=text SIZE=32 MAXLENGTH=128 NAME=address placeholder="Адрес">
+            </div>
+            <div class="form-group">
+                <label for="additInput">Примечание</label>
+                <INPUT id="additInput" class="form-control" TYPE=text SIZE=32 MAXLENGTH=32 NAME=prim placeholder="Примечание...">
+            </div>
+            <div class="form-group">
+                <label for="uidInpit">UID</label>
+                <INPUT id="uidInpit" class="form-control" TYPE=text SIZE=6 MAXLENGTH=10 NAME=uid placeholder="User ID">
+            </div>
+            </FORM>
+            <form class="form-inline" role="form" action="">
+            <div class="form-group">
+                <label >Обработать по</label>
+                <INPUT class="form-control" TYPE=radio NAME=op VALUE=0 CHECKED> ИЛИ
+                <INPUT class="form-control" TYPE=radio NAME=op VALUE=1> И
+            </div>
+            <div>
+                <button type="submit" class="btn btn-info" value="SUBMIT">Найти</button>
+                </div>
+            </form>
+        </div>
+        <!-- Конец блока поиска -->
+        <!-- Тут начинается самое интересное говно - перетаскиваемые виджеты -->
+        <div id="widgetsArea"><!-- Этот div тут, по-идее, нахрен не нужен-->
+            <!-- Колонка с двумя блоками -->
+        <div class="col-md-3">
+            <div class="gridElem" draggable="true">
+            <h3>Информация</h3>
+            <div class="well">
+                <label for="balance">Баланс:</label>
+                <div id="balance">
+                    <strong><span class="label label-success">1138 р.</span></strong>
+                    <small><button class="btn btn-default btn-xs">Посмотреть статистику</button></small>
+                </div>
+                <label for="nowOnline">Сейчас онлайн:</label>
+                <div id="nowOnline">
+                    <strong><span class="label label-info">318 чел.</span></strong>
+                    <small><button class="btn btn-default btn-xs">Посмотреть список</button></small>
+                </div>
+            </div>
+            </div>
+            <!-- Конец первого, начало второго -->
+            <div class="gridElem" draggable="true">
+            <h3>Трафик за сессию:</h3>
+            <div class="well">
+                <i class="fa fa-arrow-up">UP:</i> <span class="label label-success">23.3 Gb</span> <i class="fa fa-arrow-down">DOWN:</i> <span class="label label-success">136.33 Gb</span>
+            </div>
+            </div>
+        </div>
+            <!-- Следующая колонка, один блок -->
+        <div class="col-md-3">
+            <div class="gridElem"  draggable="true">
+            <h3>Последние действия</h3>
+            <div class="panel panel-default">
+                <div class="panel-heading">Прибыль за сегодня: <span class="label label-success">830 р.</span></div>
+                <div class="panel-body">
+                <table class="table table-striped table-bordered">
+                    <tr class="info">
+                        <th>Логин</th>
+                        <th>Сумма, р</th>
+                    </tr>
+                    <tr>
+                        <td>iZEvg</td>
+                        <td>150</td>
+                    </tr>
+                    <tr>
+                        <td>20_x</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>IIIokolaD</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>10_1</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>144_2</td>
+                        <td>500</td>
+                    </tr>
+                </table>
+                    <div class="panel-footer">Прибыль за сезон: <span class="label label-success">3193 р.</span></div>
+                </div>
+            </div>
+            </div>
+        </div>
+            <!-- Конец колонки -->
+        </div>
+    </div>
+</div>
+<!-- А вот тут у нас тысячи говнокода под соусом поноса -->
+<script>
+
+    var dragSrcEl = null;
+
+    function handleDragStart(e) {
+        this.style.opacity = '0.4';  // this / e.target is the source node.
+        dragSrcEl = this;
+
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/html', this.innerHTML);
+    }
+    function handleDragOver(e) {
+        if (e.preventDefault) {
+            e.preventDefault(); // Necessary. Allows us to drop.
+        }
+
+        e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
+
+        return false;
+    }
+
+    function handleDragEnter(e) {
+        // this / e.target is the current hover target.
+        this.classList.add('over');
+    }
+
+    function handleDragLeave(e) {
+        this.style.opacity = '1.0'; // а вот это я дописал :3
+        this.classList.remove('over');  // this / e.target is previous target element.
+    }
+
+    function handleDrop(e) {
+        // this / e.target is current target element.
+        this.style.opacity = '1.0'; // и это тоже ;3
+
+        if (e.stopPropagation) {
+            e.stopPropagation(); // stops the browser from redirecting.
+        }
+
+        // Don't do anything if dropping the same column we're dragging.
+        if (dragSrcEl != this) {
+            // Set the source column's HTML to the HTML of the columnwe dropped on.
+            dragSrcEl.innerHTML = this.innerHTML;
+            this.innerHTML = e.dataTransfer.getData('text/html');
+        }
+        return false;
+    }
+
+    function handleDragEnd(e) {
+        // this/e.target is the source node.
+
+        [].forEach.call(cols, function (col) {
+            col.classList.remove('over');
+        });
+    }
+
+    var cols = document.querySelectorAll('div.gridElem');
+    [].forEach.call(cols, function(col) {
+        col.addEventListener('dragstart', handleDragStart, false);
+        col.addEventListener('dragenter', handleDragEnter, false);
+        col.addEventListener('dragover', handleDragOver, false);
+        col.addEventListener('dragleave', handleDragLeave, false);
+        col.addEventListener('drop', handleDrop, false);
+        col.addEventListener('dragend', handleDragEnd, false);
+    });
+</script>
+<!-- Скрипты для работы выпадающего меню и модального окна -->
+<script>$('#settings').modal('hide')</script>
+</body>
+</html>
