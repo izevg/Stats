@@ -9,7 +9,7 @@
     <script src="js/bootstrap-dropdown.js"></script>
     <script src="js/bootstrap-modal.js"></script>
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
-    <title></title>
+    <title>Изменение пользователя</title>
 </head>
 <body>
 <!-- Ужасное бутстрапное меню =) -->
@@ -61,17 +61,17 @@
 <!-- Контент -->
 <div class="container">
     <div class="page-header"><h1><i class="fa fa-plus"></i> Пополнение баланса</h1></div>
-    <div calss="row">
+    <div class="row">
         <div class="col-md-4">
         <form class="form-horizontal" role="form" action="save_user.php" method="post">
             <div class="form-group">
                 <label class="col-sm-5" for="loginField">Логин</label>
                 <div class="col-sm-5">
-                    <span class="label label-default" id="loginField">izevg</span>
+                    <span class="label label-default" name="user" id="loginField">izevg</span>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-5" for="blockControl">Блокирован?</label>
+                <label class="col-sm-5" for="blockControl">Заблокировать?</label>
                 <div class="col-sm-5">
                     <select class="form-control" name="blocked" id="blockControl">
                         <option value="0" selected>Нет</option>
@@ -80,20 +80,72 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-5" for="depositeField">Логин</label>
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" id="depositeField" placeholder="Зачислить"/>
+                <label class="col-sm-4" for="depositeField">Зачислить</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="deposit" id="depositeField" placeholder="Сумма, р."/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2" for="loginField">Логин</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="loginField" placeholder="Логин..."/>
+                <label class="col-sm-4" for="passField">Пароль</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="password" id="passField" placeholder="Пароль, латин."/>
                 </div>
             </div>
         </form>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-4">
+            <form class="form-horizontal" role="form" action="save_user.php" method="post">
+                <div class="form-group">
+                    <label class="col-sm-4" for="fioField">ФИО</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="fio" id="fioField" placeholder="ФИО..."/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4" for="phoneField">Телефон</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="phone" id="phoneField" placeholder="Телефон..."/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4" for="addressField">Адрес</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="address" id="addressField" placeholder="Адрес..."/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4" for="noteField">Примечание</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="prim" id="noteField" placeholder="Примечание..."/>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-info">
+                <div class="panel-heading"><i class="fa fa-cogs"> </i> Служебная информация</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" action="save_user.php" method="post">
+                        <div class="form-group">
+                            <label class="col-sm-5" for="packetType">Тариф</label>
+                            <div class="col-sm-5">
+                                <select class="form-control" name="gid" id="packetType">
+                                    <option value="5">Traffic</option>
+                                    <option value="7">Unlim Time</option>
+                                    <option value="8">Games</option>
+                                    <option value="9">Unlim_time_3</option>
+                                    <option value="10">Unlim_50</option>
+                                    <option value="11" selected>Unlim_100</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="col-sm-5"><b>Последнее подключение</b></div>
+                    <div class="col-sm-5"><b>00-00-0000</b></div>
+                </div>
+            </div>
+        </div>
+<!--        <div class="col-md-4">
             <FORM ACTION=save_user.php METHOD=POST>
             <INPUT TYPE=hidden NAME=uid VALUE="10658">
             <TABLE BORDER=0 CELLSPACING=2 CELLPADDING=4 BGCOLOR=black WIDTH=30%>
@@ -163,7 +215,31 @@
         </FORM>
         <HR>
         <A HREF="packet.php?gid=11">Вернуться</A>
+    </div>-->
     </div>
-</div>
-</body>
+    <hr/>
+    <div class="row">
+            <div class="col-md-4">
+                <input class="btn btn-success btn-lg" type="submit" value="Принять" title="Смена пакета длится около 20 сек" onClick="this.disabled=true;this.form.submit();this.value='Changing...'">
+            </div>
+        <div class="col-md-4">
+            <!-- Блок быстрой помощи -->
+            <h4>Fast Help</h4>
+            <ul class="list-unstyled">
+                <li><a href="#">Файлы конфигурации</a></li>
+                <li>OpenVPN (<a href="#">x86</a> | <a href="#">x64</a>)</li>
+                <li><a href="#">Статистика за этот месяц</a></li>
+                <li><a href="#">Настройка OpenVPN на *nix</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <!-- Копирайт -->
+            <h4>&copy; 2009-2014 Ресурс статистики</h4>
+            <p>Верстка и дизайн: <a href="http://evzhukov.ru"><span class="label label-info">iZEvg</span></a><br/>
+                Система статистики и функционал: <a href="#"><span class="label label-success">assa</span></a><br/>
+                У нас нет никаких прав. Вообще =)</p>
+        </div>
+    </div>
+        </div>
+    </body>
 </html>
