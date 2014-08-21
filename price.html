@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Подключаем библиотеки и скрипты Bootstrap, библиотеку jQuery -->
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/additionals.css"/>
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <script src="js/bootstrap-dropdown.js"></script>
+    <script src="js/bootstrap-modal.js"></script>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>Тарифы</title>
+</head>
+<body>
+<!-- Ужасное бутстрапное меню =) -->
+<div class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <!-- Заголовок меню -->
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand">Статистика</a>
+        </div>
+        <!-- Сама навигация -->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#">Обзор</a></li>
+                <li class="active"><a href="#">Тарифы</a></li>
+                <li><a href="#">Настройка OpenVPN</a></li>
+                <li class="dropdown">
+                    <a class="button dropdown-toggle" data-target="#" data-toggle="dropdown">Дополнительно <b class="caret"></b></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Настройки роутинга</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+            </ul>
+            <!-- Кнопка настроек справа -->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a data-target="#settings" data-toggle="modal"><i class="fa fa-cogs"></i></a></li>
+            </ul>
+            <!-- Модальное окно. Появляется при нажатии на кнопку -->
+            <div class="modal" id="settings" tabindex="-1" role="dialog" aria-labelledby="settingsModal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Настройки</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>UNDER CONSTRUCTION</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                            <button type="button" class="btn btn-primary">Сохранить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Конец навигации -->
+<!-- Контент -->
+<div class="container">
+    <div class="page-header"><h1><i class="fa fa-dollar"></i> Тарифы</h1></div>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-responsive text-center">
+                <th class="text-center">Название тарифа</th><th class="text-center">Скорость</th><th class="text-center">Отклик</th><th class="text-center">Цена</th>
+                <tr>
+                    <td>Games</td><td>+</td><td><b class="highlited">+++</b></td><td>3 руб./день</td>
+                </tr>
+                <tr>
+                    <td>Unlim 50</td><td>++</td><td>++</td><td>50 коп./час</td>
+                </tr>
+                <tr>
+                    <td>Unlim 100</td><td><b class="highlited">+++</b></td><td>+</td><td>1 руб./час</td>
+                </tr>
+            </table>
+            <hr/>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Блок быстрых ссылок -->
+        <div class="col-md-4">
+            <h4>Быстрые ссылки</h4>
+            <ul class="list-unstyled">
+                <li><a href="http://tracker.tsure/">Студенческий BitTorrent-трекер</a></li>
+                <li><a href="#">Расписание занятий</a></li>
+                <li><a href="http://incampus.ru">Цифровой кампус</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <!-- Блок быстрой помощи -->
+            <h4>Fast Help</h4>
+            <ul class="list-unstyled">
+                <li><a href="#">Файлы конфигурации</a></li>
+                <li>OpenVPN (<a href="#">x86</a> | <a href="#">x64</a>)</li>
+                <li><a href="#">Статистика за этот месяц</a></li>
+                <li><a href="#">Настройка OpenVPN на *nix</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <!-- Копирайт -->
+            <h4>&copy; 2009-2014 Ресурс статистики</h4>
+            <p>Верстка и дизайн: <a href="http://evzhukov.ru"><span class="label label-info">iZEvg</span></a><br/>
+                Система статистики и функционал: <a href="#"><span class="label label-success">assa</span></a><br/>
+                У нас нет никаких прав. Вообще =)</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

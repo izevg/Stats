@@ -9,3 +9,6 @@
 div.over {
     border: 1px dashed #000;
 }
+b.highlited {
+    color: #ff0000;
+}
